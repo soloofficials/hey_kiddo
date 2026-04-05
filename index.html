@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Track for You Kiddo</title>
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --bg-black: #121212;
+            --card-grey: #181818;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .player-card {
+            background: var(--card-grey);
+            padding: 20px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .album-art {
+            width: 260px;
+            height: 260px;
+            background: linear-gradient(45deg, #1db954, #191414);
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .track-info h2 {
+            margin: 10px 0 5px;
+            font-size: 20px;
+        }
+
+        .track-info p {
+            color: #b3b3b3;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .play-btn {
+            background: var(--spotify-green);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: scale 0.2s;
+        }
+
+        .play-btn:hover {
+            scale: 1.1;
+        }
+
+        /* Hidden Surprise Section */
+        #surprise {
+            display: none;
+            position: absolute;
+            text-align: center;
+            animation: fadeIn 1s forwards;
+        }
+
+        .heart {
+            color: #ff4b2b;
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="player-card" id="player">
+        <div class="album-art">🎵</div>
+        <div class="track-info">
+            <h2 id="title">Secret Track.mp3</h2>
+            <p id="artist">Artist: Unknown</p>
+        </div>
+        <div class="controls">
+            <button class="play-btn" onclick="revealSurprise()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="black">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="surprise">
+        <div class="heart">❤️</div>
+        <h1>It's actually a message for you!</h1>
+        <p>I was wondering if you'd like to send me some kissses 💋</p>
+        <a href="https://instagram.com/ab_html" class="insta-btn">Send on Insta</a>
+    </div>
+
+    <script>
+        function revealSurprise() {
+            // Animation for the player card
+            const player = document.getElementById('player');
+            const surprise = document.getElementById('surprise');
+
+            player.style.transform = 'scale(0) rotate(180deg)';
+            player.style.opacity = '0';
+
+            setTimeout(() => {
+                player.style.display = 'none';
+                surprise.style.display = 'block';
+                document.body.style.background = '#000';
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
